@@ -1,6 +1,7 @@
 package io.javabrains.reactiveworkshop;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class Exercise4 {
 
@@ -9,10 +10,12 @@ public class Exercise4 {
         // Use ReactiveSources.intNumberMono()
 
         // Print the value from intNumberMono when it emits
-        // TODO: Write code here
+        ReactiveSources.intNumberMono().subscribe(number -> System.out.println(number));
 
         // Get the value from the Mono into an integer variable
-        // TODO: Write code here
+        Integer number = ReactiveSources.intNumberMono().block();
+        Optional<Integer> numberOptional = ReactiveSources.intNumberMono().blockOptional();
+        User user = ReactiveSources.userMono().block();
 
         System.out.println("Press a key to end");
         System.in.read();
