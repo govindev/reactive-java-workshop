@@ -36,13 +36,21 @@ public class Exercise7 {
                 .subscribe(System.out::println);
 
         // Switch ints from intNumbersFlux to the right user from userFlux
-        // TODO: Write code here
+        ReactiveSources.intNumbersFlux()
+                .flatMap(id -> ReactiveSources.userFlux().filter(user -> user.getId() == id))
+                .subscribe(System.out::println);
 
         // Print only distinct numbers from intNumbersFluxWithRepeat
-        // TODO: Write code here
+        ReactiveSources.intNumbersFluxWithRepeat()
+                .distinct()
+                .log()
+                .subscribe();
 
         // Print from intNumbersFluxWithRepeat excluding immediately repeating numbers
-        // TODO: Write code here
+        ReactiveSources.intNumbersFluxWithRepeat()
+                .distinctUntilChanged()
+                .log()
+                .subscribe();
 
         System.out.println("Press a key to end");
         System.in.read();
